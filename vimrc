@@ -38,6 +38,7 @@ set autochdir
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+set termguicolors
 
 noremap = nzz
 noremap - Nzz
@@ -49,6 +50,7 @@ noremap k j
 noremap h i
 noremap I 5k
 noremap K 5j
+noremap H I
 noremap J 0
 noremap L $
 
@@ -69,8 +71,10 @@ map t :tabe<CR>
 call plug#begin('~/.vim/plugged')
 
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'connorholyday/vim-snazzy'
 Plug 'morhetz/gruvbox'
+Plug 'ajmwagar/vim-deus'
 
 " File navigation
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -133,7 +137,6 @@ Plug 'fadein/vim-FIGlet'
 
 call plug#end()
 
-color gruvbox
 
 " ===
 " === NERDTree
@@ -283,3 +286,5 @@ let g:SignatureMap = {
 " ===
 let g:undotree_DiffAutoOpen = 0
 map U :UndotreeToggle<CR>
+
+color deus
