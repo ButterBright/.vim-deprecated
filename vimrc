@@ -26,7 +26,7 @@ set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set list
-set listchars=tab:▸\ ,trail:▫
+set listchars=tab:\|\ ,trail:▫
 set scrolloff=5
 set tw=0
 set indentexpr=
