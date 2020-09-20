@@ -53,6 +53,7 @@ noremap K 5j
 noremap H I
 noremap J 0
 noremap L $
+vnoremap y "+y
 
 map s <nop>
 map S :w<CR>
@@ -67,6 +68,48 @@ map <left> :vertical resize-5<CR>
 map <right> :vertical resize+5<CR>
 
 map t :tabe<CR>
+
+noremap b :call CompileRunGcc()<CR>
+func! CompileRunGcc()
+  exec "w"
+  if &filetype == 'c'
+    exec "!g++ % -o %<"
+    exec "!time ./%<"
+  elseif &filetype == 'cpp'
+    set splitbelow
+    exec "!g++ -std=c++11 % -Wall -o %<"
+    ":sp
+    ":res -15
+    :term ./%<
+  elseif &filetype == 'java'
+    exec "!javac %"
+    exec "!time java %<"
+  elseif &filetype == 'sh'
+    :!time bash %
+  elseif &filetype == 'python'
+    set splitbelow
+    ":sp
+    :term python3 %
+  elseif &filetype == 'html'
+    silent! exec "!".g:mkdp_browser." % &"
+  elseif &filetype == 'markdown'
+    exec "InstantMarkdownPreview"
+  elseif &filetype == 'tex'
+    silent! exec "VimtexStop"
+    silent! exec "VimtexCompile"
+  elseif &filetype == 'dart'
+    exec "CocCommand flutter.run -d ".g:flutter_default_device
+    silent! exec "CocCommand flutter.dev.openDevLog"
+  elseif &filetype == 'javascript'
+    set splitbelow
+    :sp
+    :term export DEBUG="INFO,ERROR,WARNING"; node --trace-warnings .
+  elseif &filetype == 'go'
+    set splitbelow
+    :sp
+    :term go run .
+  endif
+endfunc
 
 call plug#begin('~/.vim/plugged')
 
@@ -117,6 +160,9 @@ Plug 'vim-scripts/indentpython.vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync() }, 'for' :['markdown', 'vim-plug'] }
 Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle' }
 Plug 'vimwiki/vimwiki'
+source ~/.vim/md-snippets.vim
+nmap r <Plug>MarkdownPreview
+nmap sr <Plug>MarkdownPreviewStop
 
 " Bookmarks
 Plug 'kshenoy/vim-signature'
@@ -206,7 +252,7 @@ let g:mkdp_refresh_slow = 0
 let g:mkdp_command_for_global = 0
 let g:mkdp_open_to_the_world = 0
 let g:mkdp_open_ip = ''
-let g:mkdp_browser = 'chromium'
+let g:mkdp_browser = 'firefox'
 let g:mkdp_echo_preview_url = 0
 let g:mkdp_browserfunc = ''
 let g:mkdp_preview_options = {
