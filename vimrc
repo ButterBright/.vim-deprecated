@@ -185,7 +185,6 @@ Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'kana/vim-textobj-user'
 Plug 'fadein/vim-FIGlet'
 
-
 call plug#end()
 
 " coc.nvim
@@ -364,10 +363,11 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
+noremap tt :CocCommand explorer<CR>
 " ===
 " === NERDTree
 " ===
-map tt :NERDTreeToggle<CR>
+map nn :NERDTreeToggle<CR>
 let NERDTreeMapOpenExpl = ""
 let NERDTreeMapUpdir = ""
 let NERDTreeMapUpdirKeepOpen = "l"
