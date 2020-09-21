@@ -158,7 +158,7 @@ Plug 'vim-scripts/indentpython.vim'
 
 " Markdown
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync() }, 'for' :['markdown', 'vim-plug'] }
-Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle' }
+Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle', 'for': ['text', 'markdown', 'vim-plug'] }
 Plug 'vimwiki/vimwiki'
 source ~/.vim/md-snippets.vim
 nmap r <Plug>MarkdownPreview
@@ -174,6 +174,7 @@ Plug 'tpope/vim-surround' " type ysks' to wrap the word with '' or type cs'` to 
 Plug 'godlygeek/tabular' " type ;Tabularize /= to align the =
 Plug 'gcmt/wildfire.vim' " in Visual mode, type i' to select all text in '', or type i) i] i} ip
 Plug 'scrooloose/nerdcommenter' " in <space>cc to comment a line
+Plug 'machakann/vim-highlightedyank'
 
 " Dependencies
 Plug 'MarcWeber/vim-addon-mw-utils'
