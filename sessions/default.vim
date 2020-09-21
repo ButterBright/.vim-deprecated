@@ -69,9 +69,6 @@ nmap u <Plug>(emmet-update-tag)
 nmap ; <Plug>(emmet-expand-word)
 vmap , <Plug>(emmet-expand-abbr)
 nmap , <Plug>(emmet-expand-abbr)
-nnoremap <nowait> <silent>  j :CocNext
-vmap  j h
-omap  j h
 nmap  ca <Plug>NERDCommenterAltDelims
 xmap  cu <Plug>NERDCommenterUncomment
 nmap  cu <Plug>NERDCommenterUncomment
@@ -107,7 +104,8 @@ nmap  ww <Plug>VimwikiIndex
 map  gy :Goyo
 map  tm :TableModeToggle
 nnoremap <nowait> <silent>  p :CocListResume
-nnoremap <nowait> <silent>  k :CocPrev
+nnoremap <nowait> <silent>  i :CocPrev
+nnoremap <nowait> <silent>  k :CocNext
 nnoremap <nowait> <silent>  s :CocList -I symbols
 nnoremap <nowait> <silent>  o :CocList outline
 nnoremap <nowait> <silent>  c :CocList commands
@@ -119,6 +117,7 @@ xmap  a <Plug>(coc-codeaction-selected)
 nmap  f <Plug>(coc-format-selected)
 xmap  f <Plug>(coc-format-selected)
 nmap  rn <Plug>(coc-rename)
+map  j h
 map  l l
 noremap   :nohlsearch
 noremap - Nzz
@@ -130,7 +129,10 @@ noremap K 5j
 noremap L $
 map Q :q
 map R :source $MYVIMRC
-map S :w
+xmap S <Plug>VSurround
+nmap S :w
+smap S :w
+omap S :w
 map <silent> T :TagbarOpenAutoClose
 map U :UndotreeToggle
 nmap [C 9999[c
@@ -208,22 +210,14 @@ vnoremap <silent> <Plug>(coc-explorer-action-v-]d) :call coc#rpc#request('doKe
 nnoremap <silent> <Plug>(coc-explorer-action-n-]d) :call coc#rpc#request('doKeymap', ['explorer-action-n-]d'])
 vnoremap <silent> <Plug>(coc-explorer-action-v-[d) :call coc#rpc#request('doKeymap', ['explorer-action-v-[d'])
 nnoremap <silent> <Plug>(coc-explorer-action-n-[d) :call coc#rpc#request('doKeymap', ['explorer-action-n-[d'])
-vnoremap <silent> <Plug>(coc-explorer-action-v-]m) :call coc#rpc#request('doKeymap', ['explorer-action-v-]m'])
-nnoremap <silent> <Plug>(coc-explorer-action-n-]m) :call coc#rpc#request('doKeymap', ['explorer-action-n-]m'])
-vnoremap <silent> <Plug>(coc-explorer-action-v-[m) :call coc#rpc#request('doKeymap', ['explorer-action-v-[m'])
-nnoremap <silent> <Plug>(coc-explorer-action-n-[m) :call coc#rpc#request('doKeymap', ['explorer-action-n-[m'])
-vnoremap <silent> <Plug>(coc-explorer-action-v-]i) :call coc#rpc#request('doKeymap', ['explorer-action-v-]i'])
-nnoremap <silent> <Plug>(coc-explorer-action-n-]i) :call coc#rpc#request('doKeymap', ['explorer-action-n-]i'])
-vnoremap <silent> <Plug>(coc-explorer-action-v-[i) :call coc#rpc#request('doKeymap', ['explorer-action-v-[i'])
-nnoremap <silent> <Plug>(coc-explorer-action-n-[i) :call coc#rpc#request('doKeymap', ['explorer-action-n-[i'])
 vnoremap <silent> <Plug>(coc-explorer-action-v-]]) :call coc#rpc#request('doKeymap', ['explorer-action-v-]]'])
 nnoremap <silent> <Plug>(coc-explorer-action-n-]]) :call coc#rpc#request('doKeymap', ['explorer-action-n-]]'])
 vnoremap <silent> <Plug>(coc-explorer-action-v-[[) :call coc#rpc#request('doKeymap', ['explorer-action-v-[['])
 nnoremap <silent> <Plug>(coc-explorer-action-n-[[) :call coc#rpc#request('doKeymap', ['explorer-action-n-[['])
-vnoremap <silent> <Plug>(coc-explorer-action-v-gb) :call coc#rpc#request('doKeymap', ['explorer-action-v-gb'])
-nnoremap <silent> <Plug>(coc-explorer-action-n-gb) :call coc#rpc#request('doKeymap', ['explorer-action-n-gb'])
-vnoremap <silent> <Plug>(coc-explorer-action-v-gf) :call coc#rpc#request('doKeymap', ['explorer-action-v-gf'])
-nnoremap <silent> <Plug>(coc-explorer-action-n-gf) :call coc#rpc#request('doKeymap', ['explorer-action-n-gf'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-b) :call coc#rpc#request('doKeymap', ['explorer-action-v-b'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-b) :call coc#rpc#request('doKeymap', ['explorer-action-n-b'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-B) :call coc#rpc#request('doKeymap', ['explorer-action-v-B'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-B) :call coc#rpc#request('doKeymap', ['explorer-action-n-B'])
 vnoremap <silent> <Plug>(coc-explorer-action-v-F) :call coc#rpc#request('doKeymap', ['explorer-action-v-F'])
 nnoremap <silent> <Plug>(coc-explorer-action-n-F) :call coc#rpc#request('doKeymap', ['explorer-action-n-F'])
 vnoremap <silent> <Plug>(coc-explorer-action-v-f) :call coc#rpc#request('doKeymap', ['explorer-action-v-f'])
@@ -238,67 +232,52 @@ vnoremap <silent> <Plug>(coc-explorer-action-v-?) :call coc#rpc#request('doKey
 nnoremap <silent> <Plug>(coc-explorer-action-n-?) :call coc#rpc#request('doKeymap', ['explorer-action-n-?'])
 vnoremap <silent> <Plug>(coc-explorer-action-v-R) :call coc#rpc#request('doKeymap', ['explorer-action-v-R'])
 nnoremap <silent> <Plug>(coc-explorer-action-n-R) :call coc#rpc#request('doKeymap', ['explorer-action-n-R'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-zh) :call coc#rpc#request('doKeymap', ['explorer-action-v-zh'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-zh) :call coc#rpc#request('doKeymap', ['explorer-action-n-zh'])
 vnoremap <silent> <Plug>(coc-explorer-action-v-.) :call coc#rpc#request('doKeymap', ['explorer-action-v-.'])
 nnoremap <silent> <Plug>(coc-explorer-action-n-.) :call coc#rpc#request('doKeymap', ['explorer-action-n-.'])
-vnoremap <silent> <Plug>(coc-explorer-action-v-r) :call coc#rpc#request('doKeymap', ['explorer-action-v-r'])
-nnoremap <silent> <Plug>(coc-explorer-action-n-r) :call coc#rpc#request('doKeymap', ['explorer-action-n-r'])
-vnoremap <silent> <Plug>(coc-explorer-action-v-A) :call coc#rpc#request('doKeymap', ['explorer-action-v-A'])
-nnoremap <silent> <Plug>(coc-explorer-action-n-A) :call coc#rpc#request('doKeymap', ['explorer-action-n-A'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-cw) :call coc#rpc#request('doKeymap', ['explorer-action-v-cw'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-cw) :call coc#rpc#request('doKeymap', ['explorer-action-n-cw'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-M) :call coc#rpc#request('doKeymap', ['explorer-action-v-M'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-M) :call coc#rpc#request('doKeymap', ['explorer-action-n-M'])
 vnoremap <silent> <Plug>(coc-explorer-action-v-a) :call coc#rpc#request('doKeymap', ['explorer-action-v-a'])
 nnoremap <silent> <Plug>(coc-explorer-action-n-a) :call coc#rpc#request('doKeymap', ['explorer-action-n-a'])
-vnoremap <silent> <Plug>(coc-explorer-action-v-D) :call coc#rpc#request('doKeymap', ['explorer-action-v-D'])
-nnoremap <silent> <Plug>(coc-explorer-action-n-D) :call coc#rpc#request('doKeymap', ['explorer-action-n-D'])
-vnoremap <silent> <Plug>(coc-explorer-action-v-d) :call coc#rpc#request('doKeymap', ['explorer-action-v-d'])
-nnoremap <silent> <Plug>(coc-explorer-action-n-d) :call coc#rpc#request('doKeymap', ['explorer-action-n-d'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-dD) :call coc#rpc#request('doKeymap', ['explorer-action-v-dD'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-dD) :call coc#rpc#request('doKeymap', ['explorer-action-n-dD'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-pp) :call coc#rpc#request('doKeymap', ['explorer-action-v-pp'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-pp) :call coc#rpc#request('doKeymap', ['explorer-action-n-pp'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-dd) :call coc#rpc#request('doKeymap', ['explorer-action-v-dd'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-dd) :call coc#rpc#request('doKeymap', ['explorer-action-n-dd'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-yy) :call coc#rpc#request('doKeymap', ['explorer-action-v-yy'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-yy) :call coc#rpc#request('doKeymap', ['explorer-action-n-yy'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-yn) :call coc#rpc#request('doKeymap', ['explorer-action-v-yn'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-yn) :call coc#rpc#request('doKeymap', ['explorer-action-n-yn'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-yp) :call coc#rpc#request('doKeymap', ['explorer-action-v-yp'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-yp) :call coc#rpc#request('doKeymap', ['explorer-action-n-yp'])
 vnoremap <silent> <Plug>(coc-explorer-action-v-p) :call coc#rpc#request('doKeymap', ['explorer-action-v-p'])
 nnoremap <silent> <Plug>(coc-explorer-action-n-p) :call coc#rpc#request('doKeymap', ['explorer-action-n-p'])
-vnoremap <silent> <Plug>(coc-explorer-action-v-x) :call coc#rpc#request('doKeymap', ['explorer-action-v-x'])
-nnoremap <silent> <Plug>(coc-explorer-action-n-x) :call coc#rpc#request('doKeymap', ['explorer-action-n-x'])
-vnoremap <silent> <Plug>(coc-explorer-action-v-c) :call coc#rpc#request('doKeymap', ['explorer-action-v-c'])
-nnoremap <silent> <Plug>(coc-explorer-action-n-c) :call coc#rpc#request('doKeymap', ['explorer-action-n-c'])
-vnoremap <silent> <Plug>(coc-explorer-action-v-Y) :call coc#rpc#request('doKeymap', ['explorer-action-v-Y'])
-nnoremap <silent> <Plug>(coc-explorer-action-n-Y) :call coc#rpc#request('doKeymap', ['explorer-action-n-Y'])
-vnoremap <silent> <Plug>(coc-explorer-action-v-y) :call coc#rpc#request('doKeymap', ['explorer-action-v-y'])
-nnoremap <silent> <Plug>(coc-explorer-action-n-y) :call coc#rpc#request('doKeymap', ['explorer-action-n-y'])
-vnoremap <silent> <Plug>(coc-explorer-action-v-gp) :call coc#rpc#request('doKeymap', ['explorer-action-v-gp'])
-nnoremap <silent> <Plug>(coc-explorer-action-n-gp) :call coc#rpc#request('doKeymap', ['explorer-action-n-gp'])
-vnoremap <silent> <Plug>(coc-explorer-action-v-gs) :call coc#rpc#request('doKeymap', ['explorer-action-v-gs'])
-nnoremap <silent> <Plug>(coc-explorer-action-n-gs) :call coc#rpc#request('doKeymap', ['explorer-action-n-gs'])
-vnoremap <silent> <Plug>(coc-explorer-action-v-[bs]) :call coc#rpc#request('doKeymap', ['explorer-action-v-[bs]'])
-nnoremap <silent> <Plug>(coc-explorer-action-n-[bs]) :call coc#rpc#request('doKeymap', ['explorer-action-n-[bs]'])
-vnoremap <silent> <Plug>(coc-explorer-action-v-t) :call coc#rpc#request('doKeymap', ['explorer-action-v-t'])
-nnoremap <silent> <Plug>(coc-explorer-action-n-t) :call coc#rpc#request('doKeymap', ['explorer-action-n-t'])
-vnoremap <silent> <Plug>(coc-explorer-action-v-E) :call coc#rpc#request('doKeymap', ['explorer-action-v-E'])
-nnoremap <silent> <Plug>(coc-explorer-action-n-E) :call coc#rpc#request('doKeymap', ['explorer-action-n-E'])
-vnoremap <silent> <Plug>(coc-explorer-action-v-s) :call coc#rpc#request('doKeymap', ['explorer-action-v-s'])
-nnoremap <silent> <Plug>(coc-explorer-action-n-s) :call coc#rpc#request('doKeymap', ['explorer-action-n-s'])
-vnoremap <silent> <Plug>(coc-explorer-action-v-e) :call coc#rpc#request('doKeymap', ['explorer-action-v-e'])
-nnoremap <silent> <Plug>(coc-explorer-action-n-e) :call coc#rpc#request('doKeymap', ['explorer-action-n-e'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-n) :call coc#rpc#request('doKeymap', ['explorer-action-v-n'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-n) :call coc#rpc#request('doKeymap', ['explorer-action-n-n'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-O) :call coc#rpc#request('doKeymap', ['explorer-action-v-O'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-O) :call coc#rpc#request('doKeymap', ['explorer-action-n-O'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-o) :call coc#rpc#request('doKeymap', ['explorer-action-n-o'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-I) :call coc#rpc#request('doKeymap', ['explorer-action-v-I'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-I) :call coc#rpc#request('doKeymap', ['explorer-action-n-I'])
 vnoremap <silent> <Plug>(coc-explorer-action-v-[cr]) :call coc#rpc#request('doKeymap', ['explorer-action-v-[cr]'])
 nnoremap <silent> <Plug>(coc-explorer-action-n-[cr]) :call coc#rpc#request('doKeymap', ['explorer-action-n-[cr]'])
-nnoremap <silent> <Plug>(coc-explorer-action-n-o) :call coc#rpc#request('doKeymap', ['explorer-action-n-o'])
-vnoremap <silent> <Plug>(coc-explorer-action-v-[2-LeftMouse]) :call coc#rpc#request('doKeymap', ['explorer-action-v-[2-LeftMouse]'])
-nnoremap <silent> <Plug>(coc-explorer-action-n-[2-LeftMouse]) :call coc#rpc#request('doKeymap', ['explorer-action-n-[2-LeftMouse]'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-h) :call coc#rpc#request('doKeymap', ['explorer-action-v-h'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-h) :call coc#rpc#request('doKeymap', ['explorer-action-n-h'])
 vnoremap <silent> <Plug>(coc-explorer-action-v-gh) :call coc#rpc#request('doKeymap', ['explorer-action-v-gh'])
 nnoremap <silent> <Plug>(coc-explorer-action-n-gh) :call coc#rpc#request('doKeymap', ['explorer-action-n-gh'])
 vnoremap <silent> <Plug>(coc-explorer-action-v-gl) :call coc#rpc#request('doKeymap', ['explorer-action-v-gl'])
 nnoremap <silent> <Plug>(coc-explorer-action-n-gl) :call coc#rpc#request('doKeymap', ['explorer-action-n-gl'])
-vnoremap <silent> <Plug>(coc-explorer-action-v-K) :call coc#rpc#request('doKeymap', ['explorer-action-v-K'])
-nnoremap <silent> <Plug>(coc-explorer-action-n-K) :call coc#rpc#request('doKeymap', ['explorer-action-n-K'])
-vnoremap <silent> <Plug>(coc-explorer-action-v-J) :call coc#rpc#request('doKeymap', ['explorer-action-v-J'])
-nnoremap <silent> <Plug>(coc-explorer-action-n-J) :call coc#rpc#request('doKeymap', ['explorer-action-n-J'])
-vnoremap <silent> <Plug>(coc-explorer-action-v-l) :call coc#rpc#request('doKeymap', ['explorer-action-v-l'])
-nnoremap <silent> <Plug>(coc-explorer-action-n-l) :call coc#rpc#request('doKeymap', ['explorer-action-n-l'])
-vnoremap <silent> <Plug>(coc-explorer-action-v-h) :call coc#rpc#request('doKeymap', ['explorer-action-v-h'])
-nnoremap <silent> <Plug>(coc-explorer-action-n-h) :call coc#rpc#request('doKeymap', ['explorer-action-n-h'])
-vnoremap <silent> <Plug>(coc-explorer-action-v-gj) :call coc#rpc#request('doKeymap', ['explorer-action-v-gj'])
-nnoremap <silent> <Plug>(coc-explorer-action-n-gj) :call coc#rpc#request('doKeymap', ['explorer-action-n-gj'])
-vnoremap <silent> <Plug>(coc-explorer-action-v-gk) :call coc#rpc#request('doKeymap', ['explorer-action-v-gk'])
-nnoremap <silent> <Plug>(coc-explorer-action-n-gk) :call coc#rpc#request('doKeymap', ['explorer-action-n-gk'])
 vnoremap <silent> <Plug>(coc-explorer-action-v-[tab]) :call coc#rpc#request('doKeymap', ['explorer-action-v-[tab]'])
 nnoremap <silent> <Plug>(coc-explorer-action-n-[tab]) :call coc#rpc#request('doKeymap', ['explorer-action-n-[tab]'])
-vnoremap <silent> <Plug>(coc-explorer-action-v-*) :call coc#rpc#request('doKeymap', ['explorer-action-v-*'])
-nnoremap <silent> <Plug>(coc-explorer-action-n-*) :call coc#rpc#request('doKeymap', ['explorer-action-n-*'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-t) :call coc#rpc#request('doKeymap', ['explorer-action-v-t'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-t) :call coc#rpc#request('doKeymap', ['explorer-action-n-t'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-k) :call coc#rpc#request('doKeymap', ['explorer-action-n-k'])
+vnoremap <silent> <Plug>(coc-explorer-action-v-i) :call coc#rpc#request('doKeymap', ['explorer-action-v-i'])
+nnoremap <silent> <Plug>(coc-explorer-action-n-i) :call coc#rpc#request('doKeymap', ['explorer-action-n-i'])
 nnoremap <silent> <Plug>(coc-translator-h) :call coc#rpc#notify('doKeymap', ['translator-h'])
 vnoremap <silent> <Plug>(coc-translator-rv) :call coc#rpc#notify('doKeymap', ['translator-rv'])
 nnoremap <silent> <Plug>(coc-translator-r) :call coc#rpc#notify('doKeymap', ['translator-r'])
@@ -517,13 +496,13 @@ set listchars=tab:|\ ,trail:▫
 set mouse=a
 set pyxversion=3
 set ruler
-set runtimepath=~/.vim,~/.vim/plugged/coc.nvim,~/.vim/plugged/vim-airline,~/.vim/plugged/vim-airline-themes,~/.vim/plugged/vim-snazzy,~/.vim/plugged/gruvbox,~/.vim/plugged/vim-deus,~/.vim/plugged/nerdtree,~/.vim/plugged/nerdtree-git-plugin,~/.vim/plugged/ale,~/.vim/plugged/undotree,~/.vim/plugged/vim-indent-guides,~/.vim/plugged/vim-cursorword,~/.vim/plugged/conflict-marker.vim,~/.vim/plugged/vim-fugitive,~/.vim/plugged/vim-signify,~/.vim/plugged/vim-gitignore,~/.vim/plugged/vim-json,~/.vim/plugged/vim-css3-syntax,~/.vim/plugged/vim-coloresque,~/.vim/plugged/vim-javascript,~/.vim/plugged/emmet-vim,~/.vim/plugged/indentpython.vim,~/.vim/plugged/vimwiki,~/.vim/plugged/vim-signature,~/.vim/plugged/vim-multiple-cursors,~/.vim/plugged/goyo.vim,~/.vim/plugged/vim-surround,~/.vim/plugged/tabular,~/.vim/plugged/wildfire.vim,~/.vim/plugged/nerdcommenter,~/.vim/plugged/vim-highlightedyank,~/.vim/plugged/vim-addon-mw-utils,~/.vim/plugged/vim-textobj-user,~/.vim/plugged/vim-FIGlet,~/.config/coc/extensions/node_modules/coc-todolist,/usr/share/vim/vimfiles,/usr/share/vim/vim82,/usr/share/vim/vimfiles/after,~/.config/coc/extensions/node_modules/coc-snippets,~/.config/coc/extensions/node_modules/coc-explorer,~/.vim/plugged/nerdtree-git-plugin/after,~/.vim/plugged/vim-css3-syntax/after,~/.vim/plugged/vim-coloresque/after,~/.vim/plugged/vim-javascript/after,~/.vim/plugged/vim-signature/after,~/.vim/plugged/tabular/after,~/.vim/after
+set runtimepath=~/.config/coc/extensions/node_modules/coc-todolist,~/.vim,~/.vim/plugged/coc.nvim,~/.vim/plugged/vim-airline,~/.vim/plugged/vim-airline-themes,~/.vim/plugged/vim-snazzy,~/.vim/plugged/gruvbox,~/.vim/plugged/vim-deus,~/.vim/plugged/nerdtree-git-plugin,~/.vim/plugged/ale,~/.vim/plugged/undotree,~/.vim/plugged/vim-indent-guides,~/.vim/plugged/vim-cursorword,~/.vim/plugged/conflict-marker.vim,~/.vim/plugged/vim-fugitive,~/.vim/plugged/vim-signify,~/.vim/plugged/vim-gitignore,~/.vim/plugged/vim-json,~/.vim/plugged/vim-css3-syntax,~/.vim/plugged/vim-coloresque,~/.vim/plugged/vim-javascript,~/.vim/plugged/emmet-vim,~/.vim/plugged/indentpython.vim,~/.vim/plugged/vimwiki,~/.vim/plugged/vim-signature,~/.vim/plugged/vim-multiple-cursors,~/.vim/plugged/goyo.vim,~/.vim/plugged/vim-surround,~/.vim/plugged/tabular,~/.vim/plugged/wildfire.vim,~/.vim/plugged/nerdcommenter,~/.vim/plugged/vim-highlightedyank,~/.vim/plugged/vim-addon-mw-utils,~/.vim/plugged/vim-textobj-user,~/.vim/plugged/vim-FIGlet,/usr/share/vim/vimfiles,/usr/share/vim/vim82,/usr/share/vim/vimfiles/after,~/.vim/plugged/nerdtree-git-plugin/after,~/.vim/plugged/vim-css3-syntax/after,~/.vim/plugged/vim-coloresque/after,~/.vim/plugged/vim-javascript/after,~/.vim/plugged/vim-signature/after,~/.vim/plugged/tabular/after,~/.vim/after,~/.config/coc/extensions/node_modules/coc-snippets,~/.config/coc/extensions/node_modules/coc-explorer
 set scrolloff=5
 set shiftwidth=2
 set shortmess=filnxtToOSc
 set smartcase
 set softtabstop=2
-set statusline=%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}
+set statusline=%{coc#status()}%{get(b:,'coc_current_function','')}
 set suffixes=.bak,~,.o,.info,.swp,.aux,.bbl,.blg,.brf,.cb,.dvi,.idx,.ilg,.ind,.inx,.jpg,.log,.out,.png,.toc
 set tabstop=2
 set termguicolors
@@ -542,7 +521,6 @@ set shortmess=aoO
 argglobal
 %argdel
 $argadd vimrc
-edit ~/.vim/coc-settings.json
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
@@ -552,6 +530,92 @@ set winheight=1
 set winminwidth=0
 set winwidth=1
 argglobal
+enew
+file ~/.vim/\[coc-explorer]-1
+let s:cpo_save=&cpo
+set cpo&vim
+nmap <buffer> 	 <Plug>(coc-explorer-action-n-[tab])
+vmap <buffer> 	 <Plug>(coc-explorer-action-v-[tab])
+nmap <buffer>  <Plug>(coc-explorer-action-n-[cr])
+vmap <buffer>  <Plug>(coc-explorer-action-v-[cr])
+nmap <buffer> . <Plug>(coc-explorer-action-n-.)
+vmap <buffer> . <Plug>(coc-explorer-action-v-.)
+nmap <buffer> << <Plug>(coc-explorer-action-n-<<)
+vmap <buffer> << <Plug>(coc-explorer-action-v-<<)
+nmap <buffer> >> <Plug>(coc-explorer-action-n->>)
+vmap <buffer> >> <Plug>(coc-explorer-action-v->>)
+nmap <buffer> ? <Plug>(coc-explorer-action-n-?)
+vmap <buffer> ? <Plug>(coc-explorer-action-v-?)
+nmap <buffer> B <Plug>(coc-explorer-action-n-B)
+vmap <buffer> B <Plug>(coc-explorer-action-v-B)
+nmap <buffer> F <Plug>(coc-explorer-action-n-F)
+vmap <buffer> F <Plug>(coc-explorer-action-v-F)
+nmap <buffer> I <Plug>(coc-explorer-action-n-I)
+vmap <buffer> I <Plug>(coc-explorer-action-v-I)
+nmap <buffer> M <Plug>(coc-explorer-action-n-M)
+vmap <buffer> M <Plug>(coc-explorer-action-v-M)
+nmap <buffer> O <Plug>(coc-explorer-action-n-O)
+vmap <buffer> O <Plug>(coc-explorer-action-v-O)
+nmap <buffer> R <Plug>(coc-explorer-action-n-R)
+vmap <buffer> R <Plug>(coc-explorer-action-v-R)
+nmap <buffer> X <Plug>(coc-explorer-action-n-X)
+vmap <buffer> X <Plug>(coc-explorer-action-v-X)
+nmap <buffer> [c <Plug>(coc-explorer-action-n-[c)
+vmap <buffer> [c <Plug>(coc-explorer-action-v-[c)
+nmap <buffer> [d <Plug>(coc-explorer-action-n-[d)
+vmap <buffer> [d <Plug>(coc-explorer-action-v-[d)
+nmap <buffer> [[ <Plug>(coc-explorer-action-n-[[)
+vmap <buffer> [[ <Plug>(coc-explorer-action-v-[[)
+nmap <buffer> ]d <Plug>(coc-explorer-action-n-]d)
+vmap <buffer> ]d <Plug>(coc-explorer-action-v-]d)
+nmap <buffer> ]c <Plug>(coc-explorer-action-n-]c)
+vmap <buffer> ]c <Plug>(coc-explorer-action-v-]c)
+nmap <buffer> ]] <Plug>(coc-explorer-action-n-]])
+vmap <buffer> ]] <Plug>(coc-explorer-action-v-]])
+nmap <buffer> a <Plug>(coc-explorer-action-n-a)
+vmap <buffer> a <Plug>(coc-explorer-action-v-a)
+nmap <buffer> b <Plug>(coc-explorer-action-n-b)
+vmap <buffer> b <Plug>(coc-explorer-action-v-b)
+nmap <buffer> cw <Plug>(coc-explorer-action-n-cw)
+vmap <buffer> cw <Plug>(coc-explorer-action-v-cw)
+nmap <buffer> dD <Plug>(coc-explorer-action-n-dD)
+vmap <buffer> dD <Plug>(coc-explorer-action-v-dD)
+nmap <buffer> dd <Plug>(coc-explorer-action-n-dd)
+vmap <buffer> dd <Plug>(coc-explorer-action-v-dd)
+nmap <buffer> f <Plug>(coc-explorer-action-n-f)
+vmap <buffer> f <Plug>(coc-explorer-action-v-f)
+nmap <buffer> gl <Plug>(coc-explorer-action-n-gl)
+vmap <buffer> gl <Plug>(coc-explorer-action-v-gl)
+nmap <buffer> gh <Plug>(coc-explorer-action-n-gh)
+vmap <buffer> gh <Plug>(coc-explorer-action-v-gh)
+nmap <buffer> gd <Plug>(coc-explorer-action-n-gd)
+vmap <buffer> gd <Plug>(coc-explorer-action-v-gd)
+nmap <buffer> h <Plug>(coc-explorer-action-n-h)
+vmap <buffer> h <Plug>(coc-explorer-action-v-h)
+nmap <buffer> i <Plug>(coc-explorer-action-n-i)
+vmap <buffer> i <Plug>(coc-explorer-action-v-i)
+nmap <buffer> k <Plug>(coc-explorer-action-n-k)
+nmap <buffer> n <Plug>(coc-explorer-action-n-n)
+vmap <buffer> n <Plug>(coc-explorer-action-v-n)
+nmap <buffer> o <Plug>(coc-explorer-action-n-o)
+nmap <buffer> p <Plug>(coc-explorer-action-n-p)
+vmap <buffer> p <Plug>(coc-explorer-action-v-p)
+nmap <buffer> pp <Plug>(coc-explorer-action-n-pp)
+vmap <buffer> pp <Plug>(coc-explorer-action-v-pp)
+nmap <buffer> q <Plug>(coc-explorer-action-n-q)
+vmap <buffer> q <Plug>(coc-explorer-action-v-q)
+nmap <buffer> t <Plug>(coc-explorer-action-n-t)
+vmap <buffer> t <Plug>(coc-explorer-action-v-t)
+nmap <buffer> yy <Plug>(coc-explorer-action-n-yy)
+vmap <buffer> yy <Plug>(coc-explorer-action-v-yy)
+nmap <buffer> yp <Plug>(coc-explorer-action-n-yp)
+vmap <buffer> yp <Plug>(coc-explorer-action-v-yp)
+nmap <buffer> yn <Plug>(coc-explorer-action-n-yn)
+vmap <buffer> yn <Plug>(coc-explorer-action-v-yn)
+nmap <buffer> zh <Plug>(coc-explorer-action-n-zh)
+vmap <buffer> zh <Plug>(coc-explorer-action-v-zh)
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -560,19 +624,19 @@ setlocal balloonexpr=
 setlocal nobinary
 setlocal nobreakindent
 setlocal breakindentopt=
-setlocal bufhidden=
-setlocal buflisted
-setlocal buftype=
+setlocal bufhidden=hide
+setlocal nobuflisted
+setlocal buftype=nofile
 setlocal nocindent
 setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
 setlocal cinoptions=
 setlocal cinwords=if,else,while,do,for,switch
 setlocal colorcolumn=
-setlocal comments=
-setlocal commentstring=
+setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
+setlocal commentstring=/*%s*/
 setlocal complete=.,w,b,u,t,i
 setlocal concealcursor=
-setlocal conceallevel=2
+setlocal conceallevel=0
 setlocal completefunc=
 setlocal nocopyindent
 setlocal cryptmethod=
@@ -587,12 +651,12 @@ setlocal nodiff
 setlocal equalprg=
 setlocal errorformat=
 setlocal expandtab
-if &filetype != 'json'
-setlocal filetype=json
+if &filetype != 'coc-explorer'
+setlocal filetype=coc-explorer
 endif
 setlocal fixendofline
 setlocal foldcolumn=0
-setlocal foldenable
+setlocal nofoldenable
 setlocal foldexpr=0
 setlocal foldignore=#
 set foldlevel=99
@@ -603,7 +667,7 @@ setlocal foldmethod=indent
 setlocal foldminlines=1
 setlocal foldnestmax=20
 setlocal foldtext=foldtext()
-setlocal formatexpr=CocAction('formatSelected')
+setlocal formatexpr=
 setlocal formatoptions=tcq
 setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
 setlocal formatprg=
@@ -613,7 +677,7 @@ setlocal imsearch=-1
 setlocal include=
 setlocal includeexpr=
 setlocal indentexpr=
-setlocal indentkeys=0{,0},0),0[,0],!^F,o,O,e
+setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
 setlocal noinfercase
 setlocal iskeyword=@,48-57,_,192-255
 setlocal keywordprg=
@@ -621,22 +685,22 @@ setlocal nolinebreak
 setlocal nolisp
 setlocal lispwords=
 set list
-setlocal list
+setlocal nolist
 setlocal makeencoding=
 setlocal makeprg=
 setlocal matchpairs=(:),{:},[:]
-setlocal modeline
-setlocal modifiable
+setlocal nomodeline
+setlocal nomodifiable
 setlocal nrformats=bin,octal,hex
 set number
-setlocal number
+setlocal nonumber
 setlocal numberwidth=4
 setlocal omnifunc=
 setlocal path=
 setlocal nopreserveindent
 setlocal nopreviewwindow
 setlocal quoteescape=\\
-setlocal noreadonly
+setlocal readonly
 setlocal norelativenumber
 setlocal norightleft
 setlocal rightleftcmd=search
@@ -646,7 +710,7 @@ setlocal shiftwidth=2
 setlocal noshortname
 setlocal showbreak=
 setlocal sidescrolloff=-1
-setlocal signcolumn=auto
+setlocal signcolumn=no
 setlocal nosmartindent
 setlocal softtabstop=2
 setlocal nospell
@@ -656,10 +720,10 @@ setlocal spelllang=en
 setlocal spelloptions=
 setlocal statusline=%!airline#statusline(1)
 setlocal suffixesadd=
-setlocal swapfile
+setlocal noswapfile
 setlocal synmaxcol=3000
-if &syntax != 'json'
-setlocal syntax=json
+if &syntax != 'coc-explorer'
+setlocal syntax=coc-explorer
 endif
 setlocal tabstop=2
 setlocal tagcase=
@@ -676,24 +740,13 @@ setlocal varsofttabstop=
 setlocal vartabstop=
 setlocal wincolor=
 setlocal nowinfixheight
-setlocal nowinfixwidth
-setlocal wrap
+setlocal winfixwidth
+setlocal nowrap
 setlocal wrapmargin=0
-2
-normal! zo
-47
-normal! zo
-49
-normal! zo
-let s:l = 42 - ((5 * winheight(0) + 15) / 31)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-42
-normal! 04|
 tabnext 1
-badd +366 ~/.vim/vimrc
-badd +0 ~/.vim/coc-settings.json
+badd +334 ~/.vim/vimrc
+badd +16 ~/.vim/md-snippets.vim
+badd +67 ~/.vim/coc-settings.json
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf
 endif
