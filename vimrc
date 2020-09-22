@@ -26,7 +26,7 @@ set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set list
-set listchars=tab:\|\ ,trail:▫
+set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
 set scrolloff=5
 set tw=0
 set indentexpr=
@@ -52,7 +52,9 @@ noremap I 5k
 noremap K 5j
 noremap H I
 noremap J 0
-noremap L $
+inoremap { {<CR>}<Esc>ko<TAB>
+inoremap [ []<Esc>i
+inoremap ( ()<Esc>i
 "vnoremap y "+y
 
 map s <nop>
@@ -131,7 +133,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'majutsushi/tagbar', { 'on': 'TagbarOpenAutoClose' }
 
 " Error checking
-Plug 'w0rp/ale'
+"Plug 'w0rp/ale'
 
 " Auto Complete
 "Plug 'Valloric/YouCompleteMe'
@@ -140,7 +142,7 @@ Plug 'w0rp/ale'
 Plug 'mbbill/undotree/'
 
 " Other visual enhancement
-Plug 'nathanaelkane/vim-indent-guides'
+"Plug 'nathanaelkane/vim-indent-guides'
 Plug 'itchyny/vim-cursorword'
 
 " Git

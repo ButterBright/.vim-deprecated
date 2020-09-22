@@ -129,10 +129,7 @@ noremap K 5j
 noremap L $
 map Q :q
 map R :source $MYVIMRC
-xmap S <Plug>VSurround
-nmap S :w
-smap S :w
-omap S :w
+map S :w
 map <silent> T :TagbarOpenAutoClose
 map U :UndotreeToggle
 nmap [C 9999[c
@@ -476,8 +473,11 @@ imap d <Plug>(emmet-balance-tag-inward)
 imap u <Plug>(emmet-update-tag)
 imap ; <Plug>(emmet-expand-word)
 imap , <Plug>(emmet-expand-abbr)
+inoremap ( ()i
 xnoremap <silent> Ã® :call multiple_cursors#select_all("v", 0)
 nnoremap <silent> Ã® :call multiple_cursors#select_all("n", 1)
+inoremap [ []i
+inoremap { {}ko	
 let &cpo=s:cpo_save
 unlet s:cpo_save
 set autochdir
@@ -492,17 +492,17 @@ set hlsearch
 set ignorecase
 set incsearch
 set laststatus=2
-set listchars=tab:|\ ,trail:â–«
+set listchars=tab:Â»\ ,extends:â€º,precedes:â€¹,nbsp:Â·,trail:Â·
 set mouse=a
 set pyxversion=3
 set ruler
-set runtimepath=~/.config/coc/extensions/node_modules/coc-todolist,~/.vim,~/.vim/plugged/coc.nvim,~/.vim/plugged/vim-airline,~/.vim/plugged/vim-airline-themes,~/.vim/plugged/vim-snazzy,~/.vim/plugged/gruvbox,~/.vim/plugged/vim-deus,~/.vim/plugged/nerdtree-git-plugin,~/.vim/plugged/ale,~/.vim/plugged/undotree,~/.vim/plugged/vim-indent-guides,~/.vim/plugged/vim-cursorword,~/.vim/plugged/conflict-marker.vim,~/.vim/plugged/vim-fugitive,~/.vim/plugged/vim-signify,~/.vim/plugged/vim-gitignore,~/.vim/plugged/vim-json,~/.vim/plugged/vim-css3-syntax,~/.vim/plugged/vim-coloresque,~/.vim/plugged/vim-javascript,~/.vim/plugged/emmet-vim,~/.vim/plugged/indentpython.vim,~/.vim/plugged/vimwiki,~/.vim/plugged/vim-signature,~/.vim/plugged/vim-multiple-cursors,~/.vim/plugged/goyo.vim,~/.vim/plugged/vim-surround,~/.vim/plugged/tabular,~/.vim/plugged/wildfire.vim,~/.vim/plugged/nerdcommenter,~/.vim/plugged/vim-highlightedyank,~/.vim/plugged/vim-addon-mw-utils,~/.vim/plugged/vim-textobj-user,~/.vim/plugged/vim-FIGlet,/usr/share/vim/vimfiles,/usr/share/vim/vim82,/usr/share/vim/vimfiles/after,~/.vim/plugged/nerdtree-git-plugin/after,~/.vim/plugged/vim-css3-syntax/after,~/.vim/plugged/vim-coloresque/after,~/.vim/plugged/vim-javascript/after,~/.vim/plugged/vim-signature/after,~/.vim/plugged/tabular/after,~/.vim/after,~/.config/coc/extensions/node_modules/coc-snippets,~/.config/coc/extensions/node_modules/coc-explorer
+set runtimepath=~/.vim,~/.vim/plugged/coc.nvim,~/.vim/plugged/vim-airline,~/.vim/plugged/vim-airline-themes,~/.vim/plugged/vim-snazzy,~/.vim/plugged/gruvbox,~/.vim/plugged/vim-deus,~/.vim/plugged/nerdtree-git-plugin,~/.vim/plugged/undotree,~/.vim/plugged/vim-cursorword,~/.vim/plugged/conflict-marker.vim,~/.vim/plugged/vim-fugitive,~/.vim/plugged/vim-signify,~/.vim/plugged/vim-gitignore,~/.vim/plugged/vim-json,~/.vim/plugged/vim-css3-syntax,~/.vim/plugged/vim-coloresque,~/.vim/plugged/vim-javascript,~/.vim/plugged/emmet-vim,~/.vim/plugged/indentpython.vim,~/.vim/plugged/vimwiki,~/.vim/plugged/vim-signature,~/.vim/plugged/vim-multiple-cursors,~/.vim/plugged/goyo.vim,~/.vim/plugged/vim-surround,~/.vim/plugged/tabular,~/.vim/plugged/wildfire.vim,~/.vim/plugged/nerdcommenter,~/.vim/plugged/vim-highlightedyank,~/.vim/plugged/vim-addon-mw-utils,~/.vim/plugged/vim-textobj-user,~/.vim/plugged/vim-FIGlet,~/.config/coc/extensions/node_modules/coc-todolist,/usr/share/vim/vimfiles,/usr/share/vim/vim82,/usr/share/vim/vimfiles/after,~/.config/coc/extensions/node_modules/coc-snippets,~/.config/coc/extensions/node_modules/coc-explorer,~/.vim/plugged/nerdtree-git-plugin/after,~/.vim/plugged/vim-css3-syntax/after,~/.vim/plugged/vim-coloresque/after,~/.vim/plugged/vim-javascript/after,~/.vim/plugged/vim-signature/after,~/.vim/plugged/tabular/after,~/.vim/after
 set scrolloff=5
 set shiftwidth=2
 set shortmess=filnxtToOSc
 set smartcase
 set softtabstop=2
-set statusline=%{coc#status()}%{get(b:,'coc_current_function','')}
+set statusline=%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}
 set suffixes=.bak,~,.o,.info,.swp,.aux,.bbl,.blg,.brf,.cb,.dvi,.idx,.ilg,.ind,.inx,.jpg,.log,.out,.png,.toc
 set tabstop=2
 set termguicolors
@@ -521,6 +521,7 @@ set shortmess=aoO
 argglobal
 %argdel
 $argadd vimrc
+edit ~/.vim/vimrc
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
@@ -530,92 +531,18 @@ set winheight=1
 set winminwidth=0
 set winwidth=1
 argglobal
-enew
-file ~/.vim/\[coc-explorer]-1
-let s:cpo_save=&cpo
-set cpo&vim
-nmap <buffer> 	 <Plug>(coc-explorer-action-n-[tab])
-vmap <buffer> 	 <Plug>(coc-explorer-action-v-[tab])
-nmap <buffer>  <Plug>(coc-explorer-action-n-[cr])
-vmap <buffer>  <Plug>(coc-explorer-action-v-[cr])
-nmap <buffer> . <Plug>(coc-explorer-action-n-.)
-vmap <buffer> . <Plug>(coc-explorer-action-v-.)
-nmap <buffer> << <Plug>(coc-explorer-action-n-<<)
-vmap <buffer> << <Plug>(coc-explorer-action-v-<<)
-nmap <buffer> >> <Plug>(coc-explorer-action-n->>)
-vmap <buffer> >> <Plug>(coc-explorer-action-v->>)
-nmap <buffer> ? <Plug>(coc-explorer-action-n-?)
-vmap <buffer> ? <Plug>(coc-explorer-action-v-?)
-nmap <buffer> B <Plug>(coc-explorer-action-n-B)
-vmap <buffer> B <Plug>(coc-explorer-action-v-B)
-nmap <buffer> F <Plug>(coc-explorer-action-n-F)
-vmap <buffer> F <Plug>(coc-explorer-action-v-F)
-nmap <buffer> I <Plug>(coc-explorer-action-n-I)
-vmap <buffer> I <Plug>(coc-explorer-action-v-I)
-nmap <buffer> M <Plug>(coc-explorer-action-n-M)
-vmap <buffer> M <Plug>(coc-explorer-action-v-M)
-nmap <buffer> O <Plug>(coc-explorer-action-n-O)
-vmap <buffer> O <Plug>(coc-explorer-action-v-O)
-nmap <buffer> R <Plug>(coc-explorer-action-n-R)
-vmap <buffer> R <Plug>(coc-explorer-action-v-R)
-nmap <buffer> X <Plug>(coc-explorer-action-n-X)
-vmap <buffer> X <Plug>(coc-explorer-action-v-X)
-nmap <buffer> [c <Plug>(coc-explorer-action-n-[c)
-vmap <buffer> [c <Plug>(coc-explorer-action-v-[c)
-nmap <buffer> [d <Plug>(coc-explorer-action-n-[d)
-vmap <buffer> [d <Plug>(coc-explorer-action-v-[d)
-nmap <buffer> [[ <Plug>(coc-explorer-action-n-[[)
-vmap <buffer> [[ <Plug>(coc-explorer-action-v-[[)
-nmap <buffer> ]d <Plug>(coc-explorer-action-n-]d)
-vmap <buffer> ]d <Plug>(coc-explorer-action-v-]d)
-nmap <buffer> ]c <Plug>(coc-explorer-action-n-]c)
-vmap <buffer> ]c <Plug>(coc-explorer-action-v-]c)
-nmap <buffer> ]] <Plug>(coc-explorer-action-n-]])
-vmap <buffer> ]] <Plug>(coc-explorer-action-v-]])
-nmap <buffer> a <Plug>(coc-explorer-action-n-a)
-vmap <buffer> a <Plug>(coc-explorer-action-v-a)
-nmap <buffer> b <Plug>(coc-explorer-action-n-b)
-vmap <buffer> b <Plug>(coc-explorer-action-v-b)
-nmap <buffer> cw <Plug>(coc-explorer-action-n-cw)
-vmap <buffer> cw <Plug>(coc-explorer-action-v-cw)
-nmap <buffer> dD <Plug>(coc-explorer-action-n-dD)
-vmap <buffer> dD <Plug>(coc-explorer-action-v-dD)
-nmap <buffer> dd <Plug>(coc-explorer-action-n-dd)
-vmap <buffer> dd <Plug>(coc-explorer-action-v-dd)
-nmap <buffer> f <Plug>(coc-explorer-action-n-f)
-vmap <buffer> f <Plug>(coc-explorer-action-v-f)
-nmap <buffer> gl <Plug>(coc-explorer-action-n-gl)
-vmap <buffer> gl <Plug>(coc-explorer-action-v-gl)
-nmap <buffer> gh <Plug>(coc-explorer-action-n-gh)
-vmap <buffer> gh <Plug>(coc-explorer-action-v-gh)
-nmap <buffer> gd <Plug>(coc-explorer-action-n-gd)
-vmap <buffer> gd <Plug>(coc-explorer-action-v-gd)
-nmap <buffer> h <Plug>(coc-explorer-action-n-h)
-vmap <buffer> h <Plug>(coc-explorer-action-v-h)
-nmap <buffer> i <Plug>(coc-explorer-action-n-i)
-vmap <buffer> i <Plug>(coc-explorer-action-v-i)
-nmap <buffer> k <Plug>(coc-explorer-action-n-k)
-nmap <buffer> n <Plug>(coc-explorer-action-n-n)
-vmap <buffer> n <Plug>(coc-explorer-action-v-n)
-nmap <buffer> o <Plug>(coc-explorer-action-n-o)
-nmap <buffer> p <Plug>(coc-explorer-action-n-p)
-vmap <buffer> p <Plug>(coc-explorer-action-v-p)
-nmap <buffer> pp <Plug>(coc-explorer-action-n-pp)
-vmap <buffer> pp <Plug>(coc-explorer-action-v-pp)
-nmap <buffer> q <Plug>(coc-explorer-action-n-q)
-vmap <buffer> q <Plug>(coc-explorer-action-v-q)
-nmap <buffer> t <Plug>(coc-explorer-action-n-t)
-vmap <buffer> t <Plug>(coc-explorer-action-v-t)
-nmap <buffer> yy <Plug>(coc-explorer-action-n-yy)
-vmap <buffer> yy <Plug>(coc-explorer-action-v-yy)
-nmap <buffer> yp <Plug>(coc-explorer-action-n-yp)
-vmap <buffer> yp <Plug>(coc-explorer-action-v-yp)
-nmap <buffer> yn <Plug>(coc-explorer-action-n-yn)
-vmap <buffer> yn <Plug>(coc-explorer-action-v-yn)
-nmap <buffer> zh <Plug>(coc-explorer-action-n-zh)
-vmap <buffer> zh <Plug>(coc-explorer-action-v-zh)
-let &cpo=s:cpo_save
-unlet s:cpo_save
+vnoremap <buffer> <silent> [" :exe "normal! gv"|call search('\%(^\s*".*\n\)\%(^\s*"\)\@!', "bW")
+nnoremap <buffer> <silent> [" :call search('\%(^\s*".*\n\)\%(^\s*"\)\@!', "bW")
+vnoremap <buffer> <silent> [] m':exe "normal! gv"|call search('^\s*end\(f\%[unction]\|def\)\>', "bW")
+nnoremap <buffer> <silent> [] m':call search('^\s*end\(f\%[unction]\|def\)\>', "bW")
+vnoremap <buffer> <silent> [[ m':exe "normal! gv"|call search('^\s*\(fu\%[nction]\|def\)\>', "bW")
+nnoremap <buffer> <silent> [[ m':call search('^\s*\(fu\%[nction]\|def\)\>', "bW")
+vnoremap <buffer> <silent> ]" :exe "normal! gv"|call search('^\(\s*".*\n\)\@<!\(\s*"\)', "W")
+nnoremap <buffer> <silent> ]" :call search('^\(\s*".*\n\)\@<!\(\s*"\)', "W")
+vnoremap <buffer> <silent> ][ m':exe "normal! gv"|call search('^\s*end\(f\%[unction]\|def\)\>', "W")
+nnoremap <buffer> <silent> ][ m':call search('^\s*end\(f\%[unction]\|def\)\>', "W")
+vnoremap <buffer> <silent> ]] m':exe "normal! gv"|call search('^\s*\(fu\%[nction]\|def\)\>', "W")
+nnoremap <buffer> <silent> ]] m':call search('^\s*\(fu\%[nction]\|def\)\>', "W")
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -624,16 +551,16 @@ setlocal balloonexpr=
 setlocal nobinary
 setlocal nobreakindent
 setlocal breakindentopt=
-setlocal bufhidden=hide
-setlocal nobuflisted
-setlocal buftype=nofile
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
 setlocal nocindent
 setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
 setlocal cinoptions=
 setlocal cinwords=if,else,while,do,for,switch
 setlocal colorcolumn=
-setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
-setlocal commentstring=/*%s*/
+setlocal comments=sO:\"\ -,mO:\"\ \ ,sO:#\ -,mO:#\ \ ,eO:##,:\",b:#
+setlocal commentstring=\"%s
 setlocal complete=.,w,b,u,t,i
 setlocal concealcursor=
 setlocal conceallevel=0
@@ -651,12 +578,12 @@ setlocal nodiff
 setlocal equalprg=
 setlocal errorformat=
 setlocal expandtab
-if &filetype != 'coc-explorer'
-setlocal filetype=coc-explorer
+if &filetype != 'vim'
+setlocal filetype=vim
 endif
 setlocal fixendofline
 setlocal foldcolumn=0
-setlocal nofoldenable
+setlocal foldenable
 setlocal foldexpr=0
 setlocal foldignore=#
 set foldlevel=99
@@ -677,30 +604,30 @@ setlocal imsearch=-1
 setlocal include=
 setlocal includeexpr=
 setlocal indentexpr=
-setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
+setlocal indentkeys=0{,0},0),0],:,!^F,o,O,e,=end,=},=else,=cat,=fina,=END,0\\,0=\"\\\ 
 setlocal noinfercase
 setlocal iskeyword=@,48-57,_,192-255
-setlocal keywordprg=
+setlocal keywordprg=:help
 setlocal nolinebreak
 setlocal nolisp
 setlocal lispwords=
 set list
-setlocal nolist
+setlocal list
 setlocal makeencoding=
 setlocal makeprg=
 setlocal matchpairs=(:),{:},[:]
-setlocal nomodeline
-setlocal nomodifiable
+setlocal modeline
+setlocal modifiable
 setlocal nrformats=bin,octal,hex
 set number
-setlocal nonumber
+setlocal number
 setlocal numberwidth=4
-setlocal omnifunc=
+setlocal omnifunc=syntaxcomplete#Complete
 setlocal path=
 setlocal nopreserveindent
 setlocal nopreviewwindow
 setlocal quoteescape=\\
-setlocal readonly
+setlocal noreadonly
 setlocal norelativenumber
 setlocal norightleft
 setlocal rightleftcmd=search
@@ -710,7 +637,7 @@ setlocal shiftwidth=2
 setlocal noshortname
 setlocal showbreak=
 setlocal sidescrolloff=-1
-setlocal signcolumn=no
+setlocal signcolumn=auto
 setlocal nosmartindent
 setlocal softtabstop=2
 setlocal nospell
@@ -720,10 +647,10 @@ setlocal spelllang=en
 setlocal spelloptions=
 setlocal statusline=%!airline#statusline(1)
 setlocal suffixesadd=
-setlocal noswapfile
+setlocal swapfile
 setlocal synmaxcol=3000
-if &syntax != 'coc-explorer'
-setlocal syntax=coc-explorer
+if &syntax != 'vim'
+setlocal syntax=vim
 endif
 setlocal tabstop=2
 setlocal tagcase=
@@ -740,13 +667,17 @@ setlocal varsofttabstop=
 setlocal vartabstop=
 setlocal wincolor=
 setlocal nowinfixheight
-setlocal winfixwidth
-setlocal nowrap
+setlocal nowinfixwidth
+setlocal wrap
 setlocal wrapmargin=0
+let s:l = 29 - ((19 * winheight(0) + 15) / 31)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+29
+normal! 021|
 tabnext 1
-badd +334 ~/.vim/vimrc
-badd +16 ~/.vim/md-snippets.vim
-badd +67 ~/.vim/coc-settings.json
+badd +0 ~/.vim/vimrc
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf
 endif
