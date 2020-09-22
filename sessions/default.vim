@@ -40,7 +40,6 @@ imap <C-Z>; <Plug>(emmet-expand-word)
 inoremap <Plug>(emmet-expand-word) =emmet#util#closePopup()=emmet#expandAbbr(1,"")
 imap <C-Z>, <Plug>(emmet-expand-abbr)
 inoremap <Plug>(emmet-expand-abbr) =emmet#util#closePopup()=emmet#expandAbbr(0,"")
-inoremap <silent> <Plug>(ale_complete) :ALEComplete
 inoremap <silent> <Plug>CocRefresh =coc#_complete()
 inoremap <silent> <expr> <C-@> coc#refresh()
 inoremap <silent> <expr> <Nul> coc#refresh()
@@ -126,7 +125,6 @@ noremap H I
 noremap I 5k
 noremap J 0
 noremap K 5j
-noremap L $
 map Q :q
 map R :source $MYVIMRC
 map S :w
@@ -284,7 +282,7 @@ vnoremap <silent> <Plug>(coc-translator-pv) :call coc#rpc#notify('doKeymap', [
 nnoremap <silent> <Plug>(coc-translator-p) :call coc#rpc#notify('doKeymap', ['translator-p'])
 vnoremap <silent> <Plug>(coc-snippets-select) :call coc#rpc#notify('doKeymap', ['snippets-select'])
 xnoremap <silent> <Plug>(coc-convert-snippet) :call coc#rpc#notify('doKeymap', ['convert-snippet'])
-nnoremap <SNR>117_: :=v:count ? v:count : ''
+nnoremap <SNR>106_: :=v:count ? v:count : ''
 vnoremap <silent> <Plug>NetrwBrowseXVis :call netrw#BrowseXVis()
 nnoremap <silent> <Plug>NetrwBrowseX :call netrw#BrowseX(netrw#GX(),netrw#CheckIfRemote(netrw#GX()))
 xnoremap <silent> <Plug>NERDCommenterUncomment :call NERDComment("x", "Uncomment")
@@ -374,45 +372,6 @@ nnoremap <silent> <Plug>(conflict-marker-both-rev) :ConflictMarkerBoth!
 nnoremap <silent> <Plug>(conflict-marker-both) :ConflictMarkerBoth
 nnoremap <silent> <Plug>(conflict-marker-ourselves) :ConflictMarkerOurselves
 nnoremap <silent> <Plug>(conflict-marker-themselves) :ConflictMarkerThemselves
-nnoremap <silent> <Plug>(ale_repeat_selection) :ALERepeatSelection
-nnoremap <silent> <Plug>(ale_rename) :ALERename
-nnoremap <silent> <Plug>(ale_import) :ALEImport
-nnoremap <silent> <Plug>(ale_documentation) :ALEDocumentation
-nnoremap <silent> <Plug>(ale_hover) :ALEHover
-nnoremap <silent> <Plug>(ale_find_references) :ALEFindReferences
-nnoremap <silent> <Plug>(ale_go_to_type_definition_in_vsplit) :ALEGoToTypeDefinitionIn -vsplit
-nnoremap <silent> <Plug>(ale_go_to_type_definition_in_split) :ALEGoToTypeDefinition -split
-nnoremap <silent> <Plug>(ale_go_to_type_definition_in_tab) :ALEGoToTypeDefinition -tab
-nnoremap <silent> <Plug>(ale_go_to_type_definition) :ALEGoToTypeDefinition
-nnoremap <silent> <Plug>(ale_go_to_definition_in_vsplit) :ALEGoToDefinition -vsplit
-nnoremap <silent> <Plug>(ale_go_to_definition_in_split) :ALEGoToDefinition -split
-nnoremap <silent> <Plug>(ale_go_to_definition_in_tab) :ALEGoToDefinition -tab
-nnoremap <silent> <Plug>(ale_go_to_definition) :ALEGoToDefinition
-nnoremap <silent> <Plug>(ale_fix) :ALEFix
-nnoremap <silent> <Plug>(ale_detail) :ALEDetail
-nnoremap <silent> <Plug>(ale_lint) :ALELint
-nnoremap <silent> <Plug>(ale_reset_buffer) :ALEResetBuffer
-nnoremap <silent> <Plug>(ale_disable_buffer) :ALEDisableBuffer
-nnoremap <silent> <Plug>(ale_enable_buffer) :ALEEnableBuffer
-nnoremap <silent> <Plug>(ale_toggle_buffer) :ALEToggleBuffer
-nnoremap <silent> <Plug>(ale_reset) :ALEReset
-nnoremap <silent> <Plug>(ale_disable) :ALEDisable
-nnoremap <silent> <Plug>(ale_enable) :ALEEnable
-nnoremap <silent> <Plug>(ale_toggle) :ALEToggle
-nnoremap <silent> <Plug>(ale_last) :ALELast
-nnoremap <silent> <Plug>(ale_first) :ALEFirst
-nnoremap <silent> <Plug>(ale_next_wrap_warning) :ALENext -wrap -warning
-nnoremap <silent> <Plug>(ale_next_warning) :ALENext -warning
-nnoremap <silent> <Plug>(ale_next_wrap_error) :ALENext -wrap -error
-nnoremap <silent> <Plug>(ale_next_error) :ALENext -error
-nnoremap <silent> <Plug>(ale_next_wrap) :ALENextWrap
-nnoremap <silent> <Plug>(ale_next) :ALENext
-nnoremap <silent> <Plug>(ale_previous_wrap_warning) :ALEPrevious -wrap -warning
-nnoremap <silent> <Plug>(ale_previous_warning) :ALEPrevious -warning
-nnoremap <silent> <Plug>(ale_previous_wrap_error) :ALEPrevious -wrap -error
-nnoremap <silent> <Plug>(ale_previous_error) :ALEPrevious -error
-nnoremap <silent> <Plug>(ale_previous_wrap) :ALEPreviousWrap
-nnoremap <silent> <Plug>(ale_previous) :ALEPrevious
 onoremap <silent> <Plug>(coc-classobj-a) :call coc#rpc#request('selectSymbolRange', [v:false, '', ['Interface', 'Struct', 'Class']])
 onoremap <silent> <Plug>(coc-classobj-i) :call coc#rpc#request('selectSymbolRange', [v:true, '', ['Interface', 'Struct', 'Class']])
 vnoremap <silent> <Plug>(coc-classobj-a) :call coc#rpc#request('selectSymbolRange', [v:false, visualmode(), ['Interface', 'Struct', 'Class']])
@@ -484,7 +443,6 @@ set autochdir
 set backspace=indent,eol,start
 set backupdir=~/.cache/vim/backup//
 set directory=~/.cache/vim/swap//
-set expandtab
 set fileencodings=ucs-bom,utf-8,default,latin1
 set helplang=en
 set hidden
@@ -498,13 +456,12 @@ set pyxversion=3
 set ruler
 set runtimepath=~/.vim,~/.vim/plugged/coc.nvim,~/.vim/plugged/vim-airline,~/.vim/plugged/vim-airline-themes,~/.vim/plugged/vim-snazzy,~/.vim/plugged/gruvbox,~/.vim/plugged/vim-deus,~/.vim/plugged/nerdtree-git-plugin,~/.vim/plugged/undotree,~/.vim/plugged/vim-cursorword,~/.vim/plugged/conflict-marker.vim,~/.vim/plugged/vim-fugitive,~/.vim/plugged/vim-signify,~/.vim/plugged/vim-gitignore,~/.vim/plugged/vim-json,~/.vim/plugged/vim-css3-syntax,~/.vim/plugged/vim-coloresque,~/.vim/plugged/vim-javascript,~/.vim/plugged/emmet-vim,~/.vim/plugged/indentpython.vim,~/.vim/plugged/vimwiki,~/.vim/plugged/vim-signature,~/.vim/plugged/vim-multiple-cursors,~/.vim/plugged/goyo.vim,~/.vim/plugged/vim-surround,~/.vim/plugged/tabular,~/.vim/plugged/wildfire.vim,~/.vim/plugged/nerdcommenter,~/.vim/plugged/vim-highlightedyank,~/.vim/plugged/vim-addon-mw-utils,~/.vim/plugged/vim-textobj-user,~/.vim/plugged/vim-FIGlet,~/.config/coc/extensions/node_modules/coc-todolist,/usr/share/vim/vimfiles,/usr/share/vim/vim82,/usr/share/vim/vimfiles/after,~/.config/coc/extensions/node_modules/coc-snippets,~/.config/coc/extensions/node_modules/coc-explorer,~/.vim/plugged/nerdtree-git-plugin/after,~/.vim/plugged/vim-css3-syntax/after,~/.vim/plugged/vim-coloresque/after,~/.vim/plugged/vim-javascript/after,~/.vim/plugged/vim-signature/after,~/.vim/plugged/tabular/after,~/.vim/after
 set scrolloff=5
-set shiftwidth=2
+set shiftwidth=4
 set shortmess=filnxtToOSc
 set smartcase
-set softtabstop=2
-set statusline=%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}
+set statusline=%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}
 set suffixes=.bak,~,.o,.info,.swp,.aux,.bbl,.blg,.brf,.cb,.dvi,.idx,.ilg,.ind,.inx,.jpg,.log,.out,.png,.toc
-set tabstop=2
+set tabstop=4
 set termguicolors
 set undodir=~/.cache/vim/undo//
 set updatetime=100
@@ -577,7 +534,7 @@ setlocal dictionary=
 setlocal nodiff
 setlocal equalprg=
 setlocal errorformat=
-setlocal expandtab
+setlocal noexpandtab
 if &filetype != 'vim'
 setlocal filetype=vim
 endif
@@ -633,13 +590,13 @@ setlocal norightleft
 setlocal rightleftcmd=search
 setlocal noscrollbind
 setlocal scrolloff=-1
-setlocal shiftwidth=2
+setlocal shiftwidth=4
 setlocal noshortname
 setlocal showbreak=
 setlocal sidescrolloff=-1
 setlocal signcolumn=auto
 setlocal nosmartindent
-setlocal softtabstop=2
+setlocal softtabstop=0
 setlocal nospell
 setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
 setlocal spellfile=
@@ -652,7 +609,7 @@ setlocal synmaxcol=3000
 if &syntax != 'vim'
 setlocal syntax=vim
 endif
-setlocal tabstop=2
+setlocal tabstop=4
 setlocal tagcase=
 setlocal tagfunc=
 setlocal tags=
@@ -670,12 +627,12 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-let s:l = 29 - ((19 * winheight(0) + 15) / 31)
+let s:l = 25 - ((11 * winheight(0) + 15) / 31)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-29
-normal! 021|
+25
+normal! 016|
 tabnext 1
 badd +0 ~/.vim/vimrc
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
