@@ -42,7 +42,7 @@
   "list.previewHighlightGroup": "Statement",
   "list.nextKeymap": "<C-k>",
   "list.previousKeymap": "<C-i>",
-  "coc.preferences.formatOnTypeFiletypes": [ "json" ],
+  "coc.preferences.formatOnTypeFiletypes": [ "json", "python", "js", "ts", "html", "css"],
   "explorer.width": 38,
   "explorer.sources": [
     {
@@ -103,15 +103,15 @@
     "]c": "gitNext",
     "<<": "gitStage",
     ">>": "gitUnstage"
-  },
-  "languageserver": {
-    "go": {
-      "command": "gopls",
-      "rootPatterns": ["go.mod"],
-      "trace.server": "verbose",
-      "filetypes": ["go"]
-    }
   }
+   //"languageserver": {
+     //"go": {
+       //"command": "gopls",
+       //"rootPatterns": ["go.mod"],
+       //"trace.server": "verbose",
+       //"filetypes": ["go"]
+     //}
+   //}
 }
 
 

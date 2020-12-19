@@ -52,9 +52,11 @@ noremap I 5k
 noremap K 5j
 noremap H I
 noremap J 0
-inoremap { {<CR>}<Esc>ko<TAB>
+inoremap { {<CR>}<Esc>ko
 inoremap [ []<Esc>i
 inoremap ( ()<Esc>i
+inoremap " ""<Esc>i
+inoremap ' ''<Esc>i
 "vnoremap y "+y
 
 map s <nop>
@@ -108,7 +110,8 @@ func! CompileRunGcc()
     :term export DEBUG="INFO,ERROR,WARNING"; node --trace-warnings .
   elseif &filetype == 'go'
     set splitbelow
-    :sp
+    ":sp
+    ":res -15
     :term go run .
   endif
 endfunc

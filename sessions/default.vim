@@ -127,7 +127,10 @@ noremap J 0
 noremap K 5j
 map Q :q
 map R :source $MYVIMRC
-map S :w
+xmap S <Plug>VSurround
+nmap S :w
+smap S :w
+omap S :w
 map <silent> T :TagbarOpenAutoClose
 map U :UndotreeToggle
 nmap [C 9999[c
@@ -282,7 +285,7 @@ vnoremap <silent> <Plug>(coc-translator-pv) :call coc#rpc#notify('doKeymap', [
 nnoremap <silent> <Plug>(coc-translator-p) :call coc#rpc#notify('doKeymap', ['translator-p'])
 vnoremap <silent> <Plug>(coc-snippets-select) :call coc#rpc#notify('doKeymap', ['snippets-select'])
 xnoremap <silent> <Plug>(coc-convert-snippet) :call coc#rpc#notify('doKeymap', ['convert-snippet'])
-nnoremap <SNR>106_: :=v:count ? v:count : ''
+nnoremap <SNR>102_: :=v:count ? v:count : ''
 vnoremap <silent> <Plug>NetrwBrowseXVis :call netrw#BrowseXVis()
 nnoremap <silent> <Plug>NetrwBrowseX :call netrw#BrowseX(netrw#GX(),netrw#CheckIfRemote(netrw#GX()))
 xnoremap <silent> <Plug>NERDCommenterUncomment :call NERDComment("x", "Uncomment")
@@ -432,11 +435,13 @@ imap d <Plug>(emmet-balance-tag-inward)
 imap u <Plug>(emmet-update-tag)
 imap ; <Plug>(emmet-expand-word)
 imap , <Plug>(emmet-expand-abbr)
+inoremap " ""i
+inoremap ' ''i
 inoremap ( ()i
 xnoremap <silent> Ã® :call multiple_cursors#select_all("v", 0)
 nnoremap <silent> Ã® :call multiple_cursors#select_all("n", 1)
 inoremap [ []i
-inoremap { {}ko	
+inoremap { {}ko
 let &cpo=s:cpo_save
 unlet s:cpo_save
 set autochdir
@@ -454,12 +459,12 @@ set listchars=tab:Â»\ ,extends:â€º,precedes:â€¹,nbsp:Â·,trail:Â·
 set mouse=a
 set pyxversion=3
 set ruler
-set runtimepath=~/.vim,~/.vim/plugged/coc.nvim,~/.vim/plugged/vim-airline,~/.vim/plugged/vim-airline-themes,~/.vim/plugged/vim-snazzy,~/.vim/plugged/gruvbox,~/.vim/plugged/vim-deus,~/.vim/plugged/nerdtree-git-plugin,~/.vim/plugged/undotree,~/.vim/plugged/vim-cursorword,~/.vim/plugged/conflict-marker.vim,~/.vim/plugged/vim-fugitive,~/.vim/plugged/vim-signify,~/.vim/plugged/vim-gitignore,~/.vim/plugged/vim-json,~/.vim/plugged/vim-css3-syntax,~/.vim/plugged/vim-coloresque,~/.vim/plugged/vim-javascript,~/.vim/plugged/emmet-vim,~/.vim/plugged/indentpython.vim,~/.vim/plugged/vimwiki,~/.vim/plugged/vim-signature,~/.vim/plugged/vim-multiple-cursors,~/.vim/plugged/goyo.vim,~/.vim/plugged/vim-surround,~/.vim/plugged/tabular,~/.vim/plugged/wildfire.vim,~/.vim/plugged/nerdcommenter,~/.vim/plugged/vim-highlightedyank,~/.vim/plugged/vim-addon-mw-utils,~/.vim/plugged/vim-textobj-user,~/.vim/plugged/vim-FIGlet,~/.config/coc/extensions/node_modules/coc-todolist,/usr/share/vim/vimfiles,/usr/share/vim/vim82,/usr/share/vim/vimfiles/after,~/.config/coc/extensions/node_modules/coc-snippets,~/.config/coc/extensions/node_modules/coc-explorer,~/.vim/plugged/nerdtree-git-plugin/after,~/.vim/plugged/vim-css3-syntax/after,~/.vim/plugged/vim-coloresque/after,~/.vim/plugged/vim-javascript/after,~/.vim/plugged/vim-signature/after,~/.vim/plugged/tabular/after,~/.vim/after
+set runtimepath=~/.vim,~/.vim/plugged/coc.nvim,~/.vim/plugged/vim-airline,~/.vim/plugged/vim-airline-themes,~/.vim/plugged/vim-snazzy,~/.vim/plugged/gruvbox,~/.vim/plugged/vim-deus,~/.vim/plugged/nerdtree,~/.vim/plugged/nerdtree-git-plugin,~/.vim/plugged/undotree,~/.vim/plugged/vim-cursorword,~/.vim/plugged/conflict-marker.vim,~/.vim/plugged/vim-fugitive,~/.vim/plugged/vim-signify,~/.vim/plugged/vim-gitignore,~/.vim/plugged/vim-json,~/.vim/plugged/vim-css3-syntax,~/.vim/plugged/vim-coloresque,~/.vim/plugged/vim-javascript,~/.vim/plugged/emmet-vim,~/.vim/plugged/indentpython.vim,~/.vim/plugged/vimwiki,~/.vim/plugged/vim-signature,~/.vim/plugged/vim-multiple-cursors,~/.vim/plugged/goyo.vim,~/.vim/plugged/vim-surround,~/.vim/plugged/tabular,~/.vim/plugged/wildfire.vim,~/.vim/plugged/nerdcommenter,~/.vim/plugged/vim-highlightedyank,~/.vim/plugged/vim-addon-mw-utils,~/.vim/plugged/vim-textobj-user,~/.vim/plugged/vim-FIGlet,~/.config/coc/extensions/node_modules/coc-todolist,/usr/share/vim/vimfiles,/usr/share/vim/vim82,/usr/share/vim/vimfiles/after,~/.config/coc/extensions/node_modules/coc-snippets,~/.config/coc/extensions/node_modules/coc-explorer,~/.vim/plugged/nerdtree-git-plugin/after,~/.vim/plugged/vim-css3-syntax/after,~/.vim/plugged/vim-coloresque/after,~/.vim/plugged/vim-javascript/after,~/.vim/plugged/vim-signature/after,~/.vim/plugged/tabular/after,~/.vim/after
 set scrolloff=5
 set shiftwidth=4
 set shortmess=filnxtToOSc
 set smartcase
-set statusline=%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}%{coc#status()}%{get(b:,'coc_current_function','')}
+set statusline=%{coc#status()}%{get(b:,'coc_current_function','')}
 set suffixes=.bak,~,.o,.info,.swp,.aux,.bbl,.blg,.brf,.cb,.dvi,.idx,.ilg,.ind,.inx,.jpg,.log,.out,.png,.toc
 set tabstop=4
 set termguicolors
@@ -477,8 +482,8 @@ endif
 set shortmess=aoO
 argglobal
 %argdel
-$argadd vimrc
-edit ~/.vim/vimrc
+$argadd coc-settings.json
+edit ~/.vim/coc-settings.json
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
@@ -488,18 +493,6 @@ set winheight=1
 set winminwidth=0
 set winwidth=1
 argglobal
-vnoremap <buffer> <silent> [" :exe "normal! gv"|call search('\%(^\s*".*\n\)\%(^\s*"\)\@!', "bW")
-nnoremap <buffer> <silent> [" :call search('\%(^\s*".*\n\)\%(^\s*"\)\@!', "bW")
-vnoremap <buffer> <silent> [] m':exe "normal! gv"|call search('^\s*end\(f\%[unction]\|def\)\>', "bW")
-nnoremap <buffer> <silent> [] m':call search('^\s*end\(f\%[unction]\|def\)\>', "bW")
-vnoremap <buffer> <silent> [[ m':exe "normal! gv"|call search('^\s*\(fu\%[nction]\|def\)\>', "bW")
-nnoremap <buffer> <silent> [[ m':call search('^\s*\(fu\%[nction]\|def\)\>', "bW")
-vnoremap <buffer> <silent> ]" :exe "normal! gv"|call search('^\(\s*".*\n\)\@<!\(\s*"\)', "W")
-nnoremap <buffer> <silent> ]" :call search('^\(\s*".*\n\)\@<!\(\s*"\)', "W")
-vnoremap <buffer> <silent> ][ m':exe "normal! gv"|call search('^\s*end\(f\%[unction]\|def\)\>', "W")
-nnoremap <buffer> <silent> ][ m':call search('^\s*end\(f\%[unction]\|def\)\>', "W")
-vnoremap <buffer> <silent> ]] m':exe "normal! gv"|call search('^\s*\(fu\%[nction]\|def\)\>', "W")
-nnoremap <buffer> <silent> ]] m':call search('^\s*\(fu\%[nction]\|def\)\>', "W")
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -516,11 +509,11 @@ setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
 setlocal cinoptions=
 setlocal cinwords=if,else,while,do,for,switch
 setlocal colorcolumn=
-setlocal comments=sO:\"\ -,mO:\"\ \ ,sO:#\ -,mO:#\ \ ,eO:##,:\",b:#
-setlocal commentstring=\"%s
+setlocal comments=
+setlocal commentstring=
 setlocal complete=.,w,b,u,t,i
 setlocal concealcursor=
-setlocal conceallevel=0
+setlocal conceallevel=2
 setlocal completefunc=
 setlocal nocopyindent
 setlocal cryptmethod=
@@ -535,8 +528,8 @@ setlocal nodiff
 setlocal equalprg=
 setlocal errorformat=
 setlocal noexpandtab
-if &filetype != 'vim'
-setlocal filetype=vim
+if &filetype != 'json'
+setlocal filetype=json
 endif
 setlocal fixendofline
 setlocal foldcolumn=0
@@ -551,8 +544,8 @@ setlocal foldmethod=indent
 setlocal foldminlines=1
 setlocal foldnestmax=20
 setlocal foldtext=foldtext()
-setlocal formatexpr=
-setlocal formatoptions=tcq
+setlocal formatexpr=CocAction('formatSelected')
+setlocal formatoptions=cq
 setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
 setlocal formatprg=
 setlocal grepprg=
@@ -560,11 +553,11 @@ setlocal iminsert=0
 setlocal imsearch=-1
 setlocal include=
 setlocal includeexpr=
-setlocal indentexpr=
-setlocal indentkeys=0{,0},0),0],:,!^F,o,O,e,=end,=},=else,=cat,=fina,=END,0\\,0=\"\\\ 
+setlocal indentexpr=GetJSONIndent()
+setlocal indentkeys=0{,0},0),0[,0],!^F,o,O,e
 setlocal noinfercase
 setlocal iskeyword=@,48-57,_,192-255
-setlocal keywordprg=:help
+setlocal keywordprg=
 setlocal nolinebreak
 setlocal nolisp
 setlocal lispwords=
@@ -606,8 +599,8 @@ setlocal statusline=%!airline#statusline(1)
 setlocal suffixesadd=
 setlocal swapfile
 setlocal synmaxcol=3000
-if &syntax != 'vim'
-setlocal syntax=vim
+if &syntax != 'json'
+setlocal syntax=json
 endif
 setlocal tabstop=4
 setlocal tagcase=
@@ -627,14 +620,14 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-let s:l = 25 - ((11 * winheight(0) + 15) / 31)
+let s:l = 12 - ((11 * winheight(0) + 15) / 31)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-25
-normal! 016|
+12
+normal! 021|
 tabnext 1
-badd +0 ~/.vim/vimrc
+badd +0 ~/.vim/coc-settings.json
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf
 endif
